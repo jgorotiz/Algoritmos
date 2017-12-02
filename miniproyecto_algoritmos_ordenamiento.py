@@ -9,7 +9,14 @@ from random import randint
 def generarArreglo(arreglo,tamanio):
     padre=arreglo.copy()
     arreglos=[]
-    for i in range()
+    tam=1000000/tamanio
+    for i in range(tam):
+        minilista=[]
+        for i in range (tamanio):
+            elemento=padre.pop(-1)
+            minilista.append(elemento)
+        arreglos.append(minilista)
+        
 def calcularTiempoAlgoritmos(tiemposEjecucion, tamanio,archivo):
     tiempos=[]
     #Tiempo RadixSort
@@ -30,7 +37,7 @@ def calcularTiempoAlgoritmos(tiemposEjecucion, tamanio,archivo):
     # Tiempo CountingSort
     aux2 = arreglo.copy()
     inicio = time()
-    countingSort(aux2, tamanio)
+    bubbleSort(aux2, tamanio)
     final = time()
     tiempos.append(final-inicio)
 
@@ -58,12 +65,14 @@ def calcularTiempoAlgoritmos(tiemposEjecucion, tamanio,archivo):
     final = time()
     tiempos.append(final-inicio)
     
-    archivo.write("10")
+    archivo.write(str(tamanio))
     for element in tiempos:
         linea+=","+str(element)
     archivo.write("\n")
 
 arreglo = []
-    for i in range(1000000):
-        num=randint(1000000000,9999999999)
-    return arreglo
+for i in range(1000000):
+    num=randint(1000000000,9999999999)
+    arreglo.append(num)
+file=open("algoritmos_ordenamiento_resultados.csv","w")
+file.write("elementos,)
