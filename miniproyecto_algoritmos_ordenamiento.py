@@ -17,10 +17,10 @@ def generarArreglo(arreglo,tamanio):
             minilista.append(elemento)
         arreglos.append(minilista)
         
-def calcularTiempoAlgoritmos(tiemposEjecucion, tamanio,archivo):
+def calcularTiempoAlgoritmos(arreglo, tamanio,archivo):
     tiempos=[]
     #Tiempo RadixSort
-    arreglo = generarArreglo(tamanio)
+    arreglo = generarArreglo(arreglo,tamanio)
     inicio = time()
     ordenadoRadix = radixSort(arreglo.copy(), 10)
     final = time()
@@ -34,40 +34,33 @@ def calcularTiempoAlgoritmos(tiemposEjecucion, tamanio,archivo):
     tiempos.append(final-inicio)
 
 
-    # Tiempo CountingSort
+    # Tiempo bubbleSort
     aux2 = arreglo.copy()
     inicio = time()
-    bubbleSort(aux2, tamanio)
+    bubbleSort(aux2)
     final = time()
     tiempos.append(final-inicio)
 
 
-    #Tiempo CombSort
+    #Tiempo shellSort
     aux3 = arreglo.copy()
     inicio = time()
-    combsort(aux3)
+    shellSort(aux3)
     final = time()
     tiempos.append(final-inicio)
     
 
-    #Tiempo ShellSort
+    #Tiempo heapsort
     aux4 = arreglo.copy()
     inicio = time()
-    shellSort(aux4)
+    heapsort(aux4)
     final = time()
     tiempos.append(final-inicio)
     
-
-    #Tiempo InsertionSort
-    aux5 = arreglo.copy()
-    inicio = time()
-    insertsort(aux5)
-    final = time()
-    tiempos.append(final-inicio)
     
     archivo.write(str(tamanio))
     for element in tiempos:
-        linea+=","+str(element)
+        linea+=","+str(element*1000) #para que quede en milisegundos
     archivo.write("\n")
 
 arreglo = []
@@ -75,4 +68,5 @@ for i in range(1000000):
     num=randint(1000000000,9999999999)
     arreglo.append(num)
 file=open("algoritmos_ordenamiento_resultados.csv","w")
-file.write("elementos,)
+file.write("elementos,radix,quick,bubble,shell,heap"+"\n")
+saltos=[10,100,1000,10000,100000,100000]
